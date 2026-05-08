@@ -1,0 +1,1700 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Mcall Solutions — Outsourcing de Suporte para Provedores de Internet</title>
+<meta name="description" content="Framework operacional de atendimento técnico N1/N2/N3 para provedores de internet. Reduza custos, aumente a satisfação e escale seu suporte com a Mcall Solutions."/>
+<meta name="keywords" content="Suporte ISP, Outsourcing Call Center Provedor, Gestão de Tickets, Suporte Técnico Internet, N1 N2 N3 Atendimento"/>
+<meta property="og:title" content="Mcall Solutions — Outsourcing de Suporte para ISPs"/>
+<meta property="og:description" content="Framework operacional completo para provedores de internet. Suporte N1, N2 e N3 com métricas de alta performance."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --navy: #020617;
+  --navy-800: #0a1628;
+  --navy-700: #0f2040;
+  --navy-600: #162952;
+  --navy-500: #1e3a6e;
+  --green: #009E82;
+  --green-dark: #007a65;
+  --green-light: #00c9a7;
+  --green-glow: rgba(0,158,130,0.15);
+  --amber: #F59E0B;
+  --amber-glow: rgba(245,158,11,0.15);
+  --rose: #F43F5E;
+  --rose-glow: rgba(244,63,94,0.15);
+  --white: #ffffff;
+  --gray-100: #f1f5f9;
+  --gray-200: #e2e8f0;
+  --gray-400: #94a3b8;
+  --gray-600: #475569;
+  --gray-800: #1e293b;
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #475569;
+  --border: rgba(255,255,255,0.07);
+  --border-green: rgba(0,158,130,0.3);
+  --card-bg: rgba(255,255,255,0.03);
+  --card-bg-hover: rgba(255,255,255,0.06);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--navy);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Urbanist', sans-serif;
+  line-height: 1.2;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(2,6,23,0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 68px;
+  transition: background 0.3s;
+}
+
+.nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.nav-logo img { height: 36px; object-fit: contain; }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--green); }
+
+.nav-cta {
+  background: var(--green);
+  color: var(--white) !important;
+  padding: 8px 20px !important;
+  border-radius: 8px;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  transition: background 0.2s, transform 0.2s !important;
+}
+.nav-cta:hover { background: var(--green-dark) !important; transform: translateY(-1px); }
+
+/* HERO */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 120px 5% 80px;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 20%, rgba(0,158,130,0.18) 0%, transparent 60%),
+              radial-gradient(ellipse 60% 40% at 80% 80%, rgba(0,158,130,0.08) 0%, transparent 50%),
+              linear-gradient(180deg, #020617 0%, #0a1628 100%);
+}
+
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0,158,130,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,158,130,0.05) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, black 0%, transparent 70%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0,158,130,0.12);
+  border: 1px solid rgba(0,158,130,0.25);
+  border-radius: 100px;
+  padding: 6px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--green-light);
+  margin-bottom: 32px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.hero-badge-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.3); }
+}
+
+.hero-logo {
+  margin-bottom: 28px;
+}
+.hero-logo img {
+  height: 60px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 20px rgba(0,158,130,0.4));
+}
+
+h1.hero-title {
+  font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 24px;
+  letter-spacing: -0.02em;
+}
+
+.hero-title .accent { color: var(--green); }
+.hero-title .accent-line {
+  display: block;
+  background: linear-gradient(135deg, var(--green-light), var(--green));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: var(--text-secondary);
+  max-width: 640px;
+  margin: 0 auto 44px;
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+.hero-ctas {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  background: var(--green);
+  color: white;
+  border: none;
+  padding: 14px 32px;
+  border-radius: 10px;
+  font-family: 'Urbanist', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.25s;
+  letter-spacing: 0.01em;
+  box-shadow: 0 0 30px rgba(0,158,130,0.3);
+}
+.btn-primary:hover {
+  background: var(--green-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 0 40px rgba(0,158,130,0.5);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  padding: 14px 28px;
+  border-radius: 10px;
+  font-family: 'Urbanist', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.25s;
+}
+.btn-secondary:hover {
+  border-color: var(--green);
+  color: var(--green);
+  transform: translateY(-2px);
+}
+
+.hero-stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+  margin-top: 64px;
+  padding-top: 40px;
+  border-top: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+
+.hero-stat-item { text-align: center; }
+.hero-stat-value {
+  font-family: 'Urbanist', sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--green);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.hero-stat-label {
+  font-size: 12px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 500;
+}
+
+/* SECTIONS */
+section {
+  padding: 100px 5%;
+}
+section:nth-child(even) { background: rgba(255,255,255,0.01); }
+
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--green);
+  margin-bottom: 16px;
+}
+.section-tag::before {
+  content: '';
+  display: block;
+  width: 20px; height: 2px;
+  background: var(--green);
+  border-radius: 1px;
+}
+
+.section-title {
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 800;
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+}
+
+.section-subtitle {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  line-height: 1.7;
+}
+
+.section-header {
+  margin-bottom: 64px;
+}
+
+/* PLANOS */
+#planos { background: linear-gradient(180deg, var(--navy) 0%, var(--navy-800) 100%); }
+
+.plans-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.plan-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 36px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
+  cursor: default;
+}
+.plan-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  border-radius: 20px 20px 0 0;
+}
+.plan-card.n1::before { background: var(--green); }
+.plan-card.n2::before { background: var(--amber); }
+.plan-card.n3::before { background: var(--rose); }
+
+.plan-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255,255,255,0.12);
+  background: var(--card-bg-hover);
+}
+.plan-card.n1:hover { box-shadow: 0 20px 60px rgba(0,158,130,0.2); border-color: rgba(0,158,130,0.3); }
+.plan-card.n2:hover { box-shadow: 0 20px 60px rgba(245,158,11,0.2); border-color: rgba(245,158,11,0.3); }
+.plan-card.n3:hover { box-shadow: 0 20px 60px rgba(244,63,94,0.2); border-color: rgba(244,63,94,0.3); }
+
+.plan-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 24px;
+}
+.plan-badge.n1 { background: rgba(0,158,130,0.15); color: var(--green-light); }
+.plan-badge.n2 { background: rgba(245,158,11,0.15); color: var(--amber); }
+.plan-badge.n3 { background: rgba(244,63,94,0.15); color: var(--rose); }
+
+.plan-title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
+}
+
+.plan-desc {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 28px;
+  line-height: 1.6;
+}
+
+.plan-price {
+  margin-bottom: 28px;
+}
+.plan-price-from {
+  font-size: 12px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 500;
+}
+.plan-price-value {
+  font-family: 'Urbanist', sans-serif;
+  font-size: 2.8rem;
+  font-weight: 800;
+  line-height: 1;
+  margin: 4px 0;
+}
+.plan-price-value.n1 { color: var(--green); }
+.plan-price-value.n2 { color: var(--amber); }
+.plan-price-value.n3 { color: var(--rose); }
+.plan-price-period {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.plan-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 24px 0;
+}
+
+.plan-features { list-style: none; margin-bottom: 32px; }
+.plan-features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+.plan-features li .check {
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+  font-size: 10px;
+  font-weight: 800;
+}
+.plan-features li .check.n1 { background: rgba(0,158,130,0.2); color: var(--green); }
+.plan-features li .check.n2 { background: rgba(245,158,11,0.2); color: var(--amber); }
+.plan-features li .check.n3 { background: rgba(244,63,94,0.2); color: var(--rose); }
+
+.plan-cta {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 12px;
+  border-radius: 10px;
+  font-family: 'Urbanist', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.25s;
+  cursor: pointer;
+  border: none;
+  letter-spacing: 0.02em;
+}
+.plan-cta.n1 { background: var(--green); color: white; }
+.plan-cta.n1:hover { background: var(--green-dark); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(0,158,130,0.4); }
+.plan-cta.n2 { background: var(--amber); color: #1a0a00; }
+.plan-cta.n2:hover { background: #d97706; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(245,158,11,0.4); }
+.plan-cta.n3 { background: var(--rose); color: white; }
+.plan-cta.n3:hover { background: #e11d48; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(244,63,94,0.4); }
+
+.plan-card.featured {
+  border-color: rgba(0,158,130,0.4);
+  background: rgba(0,158,130,0.05);
+}
+
+.featured-tag {
+  position: absolute;
+  top: 20px; right: 20px;
+  background: var(--green);
+  color: white;
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 4px 10px;
+  border-radius: 100px;
+}
+
+/* DETALHAMENTO TÉCNICO */
+#detalhe { background: var(--navy-800); }
+
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.tech-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px;
+  transition: all 0.3s;
+}
+.tech-card:hover {
+  background: var(--card-bg-hover);
+  border-color: rgba(255,255,255,0.1);
+  transform: translateY(-3px);
+}
+
+.tech-icon {
+  width: 48px; height: 48px;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+  margin-bottom: 18px;
+  border: 1px solid;
+}
+.tech-icon.green { background: rgba(0,158,130,0.12); border-color: rgba(0,158,130,0.25); }
+.tech-icon.amber { background: rgba(245,158,11,0.12); border-color: rgba(245,158,11,0.25); }
+.tech-icon.rose { background: rgba(244,63,94,0.12); border-color: rgba(244,63,94,0.25); }
+.tech-icon.blue { background: rgba(59,130,246,0.12); border-color: rgba(59,130,246,0.25); }
+.tech-icon.purple { background: rgba(139,92,246,0.12); border-color: rgba(139,92,246,0.25); }
+.tech-icon.cyan { background: rgba(6,182,212,0.12); border-color: rgba(6,182,212,0.25); }
+
+.tech-card h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  letter-spacing: -0.01em;
+}
+.tech-card p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.tech-tag {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-right: 4px; margin-bottom: 4px;
+}
+.tech-tag.n1 { background: rgba(0,158,130,0.15); color: var(--green); }
+.tech-tag.n2 { background: rgba(245,158,11,0.15); color: var(--amber); }
+.tech-tag.n3 { background: rgba(244,63,94,0.15); color: var(--rose); }
+
+/* MATRIZ */
+#matriz { background: var(--navy); }
+
+.matrix-wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  overflow-x: auto;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+}
+
+table.matrix {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 700px;
+  font-size: 14px;
+}
+
+.matrix thead th {
+  padding: 16px 20px;
+  background: rgba(255,255,255,0.04);
+  font-family: 'Urbanist', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+}
+.matrix thead th:first-child { text-align: left; }
+
+.matrix thead .th-n1 { color: var(--green); }
+.matrix thead .th-n2 { color: var(--amber); }
+.matrix thead .th-n3 { color: var(--rose); }
+
+.matrix tbody tr {
+  border-bottom: 1px solid var(--border);
+  transition: background 0.2s;
+}
+.matrix tbody tr:last-child { border-bottom: none; }
+.matrix tbody tr:hover { background: rgba(255,255,255,0.03); }
+
+.matrix tbody td {
+  padding: 14px 20px;
+  color: var(--text-secondary);
+  text-align: center;
+  vertical-align: middle;
+}
+.matrix tbody td:first-child {
+  text-align: left;
+  color: var(--text-primary);
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.matrix-check { font-size: 18px; }
+.check-yes { color: var(--green); }
+.check-partial { color: var(--amber); }
+.check-no { color: var(--text-muted); opacity: 0.4; }
+
+/* MÉTRICAS */
+#metricas {
+  background: linear-gradient(135deg, rgba(0,158,130,0.06) 0%, transparent 50%),
+              var(--navy-800);
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
+  max-width: 1100px;
+  margin: 0 auto 64px;
+}
+
+.metric-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+.metric-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+}
+.metric-card.green::after { background: linear-gradient(90deg, transparent, var(--green), transparent); }
+.metric-card.amber::after { background: linear-gradient(90deg, transparent, var(--amber), transparent); }
+.metric-card.rose::after { background: linear-gradient(90deg, transparent, var(--rose), transparent); }
+.metric-card.blue::after { background: linear-gradient(90deg, transparent, #3b82f6, transparent); }
+
+.metric-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255,255,255,0.1);
+}
+
+.metric-icon {
+  font-size: 28px;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.metric-value {
+  font-family: 'Urbanist', sans-serif;
+  font-size: 2.8rem;
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 4px;
+  letter-spacing: -0.03em;
+}
+.metric-value.green { color: var(--green); }
+.metric-value.amber { color: var(--amber); }
+.metric-value.rose { color: var(--rose); }
+.metric-value.blue { color: #3b82f6; }
+
+.metric-suffix {
+  font-family: 'Urbanist', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  vertical-align: super;
+}
+
+.metric-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.metric-sublabel {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.metrics-bottom {
+  max-width: 1100px;
+  margin: 0 auto;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.metrics-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.chart-row { display: flex; align-items: center; gap: 16px; }
+.chart-label { font-size: 13px; font-weight: 600; color: var(--text-secondary); min-width: 80px; }
+.chart-bar-bg { flex: 1; height: 10px; background: rgba(255,255,255,0.06); border-radius: 100px; overflow: hidden; }
+.chart-bar {
+  height: 100%;
+  border-radius: 100px;
+  transform-origin: left;
+  animation: barGrow 1.5s cubic-bezier(0.34,1.56,0.64,1) both;
+}
+@keyframes barGrow {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+.chart-bar.n1 { background: linear-gradient(90deg, var(--green-dark), var(--green-light)); }
+.chart-bar.n2 { background: linear-gradient(90deg, #d97706, var(--amber)); }
+.chart-bar.n3 { background: linear-gradient(90deg, #e11d48, #fb7185); }
+
+.chart-pct { font-family: 'Urbanist', sans-serif; font-size: 13px; font-weight: 700; color: var(--text-primary); min-width: 36px; }
+
+.metrics-text h3 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+.metrics-text p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+/* CONTATO / MODAL */
+#contato { background: var(--navy); }
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  max-width: 1000px;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.contact-info h2 {
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 800;
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+.contact-info p {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+
+.contact-links { display: flex; flex-direction: column; gap: 12px; }
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  text-decoration: none;
+  color: var(--text-primary);
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.25s;
+}
+.contact-link:hover { background: var(--card-bg-hover); border-color: var(--border-green); color: var(--green); transform: translateX(4px); }
+
+.contact-link-icon {
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+.contact-link-icon.green { background: rgba(0,158,130,0.15); }
+.contact-link-icon.blue { background: rgba(59,130,246,0.15); }
+.contact-link-icon.insta { background: rgba(244,63,94,0.15); }
+
+.form-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 36px;
+}
+
+.form-card h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  letter-spacing: -0.01em;
+}
+
+.form-group { margin-bottom: 16px; }
+.form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+  letter-spacing: 0.02em;
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 11px 14px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: var(--text-primary);
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+  appearance: none;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--green);
+  background: rgba(0,158,130,0.06);
+}
+.form-group textarea { resize: vertical; min-height: 90px; }
+.form-group select option { background: var(--navy-800); color: var(--text-primary); }
+
+.form-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 13px;
+  background: var(--green);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-family: 'Urbanist', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s;
+  letter-spacing: 0.02em;
+  margin-top: 8px;
+}
+.form-submit:hover { background: var(--green-dark); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(0,158,130,0.4); }
+
+/* FOOTER */
+footer {
+  background: var(--navy-800);
+  border-top: 1px solid var(--border);
+  padding: 48px 5% 28px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 48px;
+  max-width: 1100px;
+  margin: 0 auto 40px;
+}
+
+.footer-brand img { height: 40px; margin-bottom: 16px; }
+.footer-brand p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; max-width: 300px; }
+
+.footer-col h4 {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+
+.footer-col ul { list-style: none; }
+.footer-col ul li { margin-bottom: 10px; }
+.footer-col ul li a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.2s;
+}
+.footer-col ul li a:hover { color: var(--green); }
+
+.footer-bottom {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.footer-bottom p { font-size: 13px; color: var(--text-secondary); }
+
+.footer-socials {
+  display: flex;
+  gap: 12px;
+}
+.footer-social {
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 16px;
+  transition: all 0.2s;
+}
+.footer-social:hover { background: rgba(0,158,130,0.15); border-color: var(--green); color: var(--green); }
+
+/* MODAL */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  backdrop-filter: blur(10px);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+.modal-overlay.active { opacity: 1; pointer-events: all; }
+
+.modal {
+  background: var(--navy-700);
+  border: 1px solid rgba(0,158,130,0.25);
+  border-radius: 24px;
+  padding: 40px;
+  max-width: 480px;
+  width: 100%;
+  transform: translateY(30px) scale(0.97);
+  transition: transform 0.3s;
+  position: relative;
+}
+.modal-overlay.active .modal { transform: translateY(0) scale(1); }
+
+.modal-close {
+  position: absolute;
+  top: 16px; right: 16px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  width: 32px; height: 32px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s;
+}
+.modal-close:hover { background: rgba(255,255,255,0.1); color: var(--text-primary); }
+
+.modal h2 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+.modal p { font-size: 14px; color: var(--text-secondary); margin-bottom: 24px; line-height: 1.6; }
+
+.modal-options { display: flex; flex-direction: column; gap: 12px; }
+
+.modal-option {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  text-decoration: none;
+  color: var(--text-primary);
+  font-size: 15px;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+.modal-option:hover { border-color: var(--green); background: rgba(0,158,130,0.08); transform: translateX(4px); }
+.modal-option-icon { font-size: 22px; }
+
+/* SCROLL ANIMATIONS */
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  nav { padding: 0 4%; }
+  .nav-links { display: none; }
+  section { padding: 72px 4%; }
+  .hero-stats { gap: 28px; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+  .metrics-bottom { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">
+    <img src="https://media.base44.com/images/public/user_69fbdc6b3276b34737a7566c/f1c822420_WhatsAppImage2026-05-06at211424.jpg" alt="Mcall Solutions" onerror="this.style.display='none'; this.nextSibling.style.display='block'"/>
+    <span style="display:none; font-family:'Urbanist',sans-serif; font-size:1.2rem; font-weight:800; color:var(--green);">Mcall Solutions</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#planos">Planos</a></li>
+    <li><a href="#detalhe">Serviços</a></li>
+    <li><a href="#matriz">Competências</a></li>
+    <li><a href="#metricas">Resultados</a></li>
+    <li><a href="#contato" class="nav-cta">Solicitar Diagnóstico</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="hero-badge-dot"></span>
+      Framework Operacional N1 · N2 · N3
+    </div>
+    <div class="hero-logo">
+      <img src="https://media.base44.com/images/public/user_69fbdc6b3276b34737a7566c/f1c822420_WhatsAppImage2026-05-06at211424.jpg" alt="Mcall Solutions Logo" onerror="this.style.display='none'"/>
+    </div>
+    <h1 class="hero-title">
+      Suporte Técnico que<br/>
+      <span class="accent-line">Escala com seu ISP</span>
+    </h1>
+    <p class="hero-subtitle">
+      Outsourcing especializado em atendimento para provedores de internet. Da resolução de primeiro contato à engenharia avançada — tudo integrado, mensurado e sob controle.
+    </p>
+    <div class="hero-ctas">
+      <button class="btn-primary" onclick="document.getElementById('modalOverlay').classList.add('active')">
+        📋 Solicitar Diagnóstico Gratuito
+      </button>
+      <a class="btn-secondary" href="#planos">
+        Ver Planos →
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat-item">
+        <div class="hero-stat-value">92%</div>
+        <div class="hero-stat-label">FCR no N1</div>
+      </div>
+      <div class="hero-stat-item">
+        <div class="hero-stat-value">&lt;45s</div>
+        <div class="hero-stat-label">Tempo Médio de Resposta</div>
+      </div>
+      <div class="hero-stat-item">
+        <div class="hero-stat-value">99.3%</div>
+        <div class="hero-stat-label">SLA Cumprido</div>
+      </div>
+      <div class="hero-stat-item">
+        <div class="hero-stat-value">24/7</div>
+        <div class="hero-stat-label">Cobertura Operacional</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANOS -->
+<section id="planos">
+  <div class="section-header fade-up">
+    <div class="section-tag">Planos & Preços</div>
+    <h2 class="section-title">Planos de Outsourcing para ISPs</h2>
+    <p class="section-subtitle">
+      Todos os planos incluem suporte técnico especializado completo para provedores de internet.
+    </p>
+  </div>
+
+  <div class="plans-grid">
+
+    <!-- START -->
+    <div class="plan-card n1 fade-up">
+      <div class="plan-badge n1">● Plano Start</div>
+
+      <h2 class="plan-title">Start ISP</h2>
+
+      <p class="plan-desc">
+        Ideal para pequenos provedores que precisam estruturar e profissionalizar o atendimento técnico.
+      </p>
+
+      <div class="plan-price">
+        <div class="plan-price-from">valor mensal</div>
+        <div class="plan-price-value n1">R$ 7.200</div>
+        <div class="plan-price-period">Atendimento das 08:00 às 22:00</div>
+        <div class="plan-price-period">Base de até 2.000 clientes</div>
+      </div>
+
+      <div class="plan-divider"></div>
+
+      <ul class="plan-features">
+        <li><span class="check n1">✓</span> Outsourcing de suporte técnico especializado para ISPs</li>
+        <li><span class="check n1">✓</span> Atendimento FTTH e rádio</li>
+        <li><span class="check n1">✓</span> Gestão e monitoramento de tickets</li>
+        <li><span class="check n1">✓</span> Diagnóstico ONU/OLT, PPPoE e autenticação</li>
+        <li><span class="check n1">✓</span> Controle operacional de TMA e TME</li>
+        <li><span class="check n1">✓</span> Gestão de fluxos operacionais</li>
+      </ul>
+
+      <button class="plan-cta n1" onclick="document.getElementById('modalOverlay').classList.add('active')">
+        Solicitar Proposta →
+      </button>
+    </div>
+
+    <!-- PRO -->
+    <div class="plan-card n2 fade-up featured">
+      <div class="featured-tag">⭐ Mais Contratado</div>
+
+      <div class="plan-badge n2">◆ Plano Pro</div>
+
+      <h2 class="plan-title">Pro ISP</h2>
+
+      <p class="plan-desc">
+        Estrutura operacional robusta para provedores em crescimento com maior volume de chamados.
+      </p>
+
+      <div class="plan-price">
+        <div class="plan-price-from">valor mensal</div>
+        <div class="plan-price-value n2">R$ 8.500</div>
+        <div class="plan-price-period">Atendimento das 08:00 às 22:00</div>
+        <div class="plan-price-period">Base de até 4.000 clientes</div>
+      </div>
+
+      <div class="plan-divider"></div>
+
+      <ul class="plan-features">
+        <li><span class="check n2">✓</span> Outsourcing de suporte técnico especializado para ISPs</li>
+        <li><span class="check n2">✓</span> Atendimento FTTH e rádio</li>
+        <li><span class="check n2">✓</span> Gestão e monitoramento de tickets</li>
+        <li><span class="check n2">✓</span> Diagnóstico ONU/OLT, PPPoE e autenticação</li>
+        <li><span class="check n2">✓</span> Controle operacional de TMA e TME</li>
+        <li><span class="check n2">✓</span> Gestão de fluxos operacionais</li>
+      </ul>
+
+      <button class="plan-cta n2" onclick="document.getElementById('modalOverlay').classList.add('active')">
+        Solicitar Proposta →
+      </button>
+    </div>
+
+    <!-- BUSINESS -->
+    <div class="plan-card n3 fade-up">
+      <div class="plan-badge n3">▲ Plano Business</div>
+
+      <h2 class="plan-title">Business ISP</h2>
+
+      <p class="plan-desc">
+        Atendimento especializado para operações com alta demanda e necessidade de maior estabilidade operacional.
+      </p>
+
+      <div class="plan-price">
+        <div class="plan-price-from">valor mensal</div>
+        <div class="plan-price-value n3">R$ 10.000</div>
+        <div class="plan-price-period">Atendimento das 08:00 às 22:00</div>
+        <div class="plan-price-period">Base de até 6.000 clientes</div>
+      </div>
+
+      <div class="plan-divider"></div>
+
+      <ul class="plan-features">
+        <li><span class="check n3">✓</span> Outsourcing de suporte técnico especializado para ISPs</li>
+        <li><span class="check n3">✓</span> Atendimento FTTH e rádio</li>
+        <li><span class="check n3">✓</span> Gestão e monitoramento de tickets</li>
+        <li><span class="check n3">✓</span> Diagnóstico ONU/OLT, PPPoE e autenticação</li>
+        <li><span class="check n3">✓</span> Controle operacional de TMA e TME</li>
+        <li><span class="check n3">✓</span> Gestão de fluxos operacionais</li>
+      </ul>
+
+      <button class="plan-cta n3" onclick="document.getElementById('modalOverlay').classList.add('active')">
+        Solicitar Proposta →
+      </button>
+    </div>
+
+    <!-- ENTERPRISE -->
+    <div class="plan-card n1 fade-up">
+      <div class="plan-badge n1">■ Plano Enterprise</div>
+
+      <h2 class="plan-title">Enterprise ISP</h2>
+
+      <p class="plan-desc">
+        Solução completa para grandes operações que exigem alta performance e escalabilidade contínua.
+      </p>
+
+      <div class="plan-price">
+        <div class="plan-price-from">valor mensal</div>
+        <div class="plan-price-value n1">R$ 12.000</div>
+        <div class="plan-price-period">Atendimento das 08:00 às 22:00</div>
+        <div class="plan-price-period">Base de até 10.000 clientes</div>
+      </div>
+
+      <div class="plan-divider"></div>
+
+      <ul class="plan-features">
+        <li><span class="check n1">✓</span> Outsourcing de suporte técnico especializado para ISPs</li>
+        <li><span class="check n1">✓</span> Atendimento FTTH e rádio</li>
+        <li><span class="check n1">✓</span> Gestão e monitoramento de tickets</li>
+        <li><span class="check n1">✓</span> Diagnóstico ONU/OLT, PPPoE e autenticação</li>
+        <li><span class="check n1">✓</span> Controle operacional de TMA e TME</li>
+        <li><span class="check n1">✓</span> Gestão de automações</li>
+        <li><span class="check n1">✓</span> Mentoria e gestão de performance</li>
+
+      </ul>
+
+      <button class="plan-cta n1" onclick="document.getElementById('modalOverlay').classList.add('active')">
+        Solicitar Proposta →
+      </button>
+    </div>
+
+  </div>
+</section>
+
+<!-- DETALHAMENTO TÉCNICO -->
+<section id="detalhe">
+  <div class="section-header fade-up">
+    <div class="section-tag">Detalhamento Técnico</div>
+    <h2 class="section-title">Capacidades Operacionais</h2>
+    <p class="section-subtitle">Infraestrutura técnica e processos certificados desenvolvidos especificamente para o ecossistema ISP.</p>
+  </div>
+  <div class="tech-grid">
+    <div class="tech-card fade-up">
+      <div class="tech-icon green">📡</div>
+      <h3>Monitoramento 24/7</h3>
+      <p>Centro de operações com monitoramento proativo de toda a infraestrutura FTTH/GPON. Alertas automáticos e resposta imediata a degradações.</p>
+      <span class="tech-tag n1">N1</span><span class="tech-tag n2">N2</span><span class="tech-tag n3">N3</span>
+    </div>
+    <div class="tech-card fade-up">
+      <div class="tech-icon amber">🎫</div>
+      <h3>Gestão de Tickets SGT</h3>
+      <p>Integração com os principais sistemas: Hubspot, Freshdesk, Movidesk e plataformas proprietárias. SLA rastreado por chamado em tempo real.</p>
+      <span class="tech-tag n1">N1</span><span class="tech-tag n2">N2</span>
+    </div>
+    <div class="tech-card fade-up">
+      <div class="tech-icon blue">🔧</div>
+      <h3>Troubleshooting Remoto GPON</h3>
+      <p>Diagnóstico e resolução remota de ONUs, OLTs e splitters. Compatível com equipamentos Huawei, ZTE, Fiberhome, Intelbras e mais.</p>
+      <span class="tech-tag n1">N1</span><span class="tech-tag n2">N2</span>
+    </div>
+    <div class="tech-card fade-up">
+      <div class="tech-icon cyan">📊</div>
+      <h3>Relatórios</h3>
+      <p>Dashboard em tempo real com métricas de TMA, TME, FCR, NPS e CSAT. Relatórios executivos automatizados via BI integrado.</p>
+      <span class="tech-tag n2">N2</span><span class="tech-tag n3">N3</span>
+    </div>
+    <div class="tech-card fade-up">
+      <div class="tech-icon purple">🤖</div>
+      <h3>Automação & Scripts</h3>
+      <p>Desenvolvimento de scripts Python/Ansible para provisionamento automático de clientes, backup de configurações e resposta a incidentes.</p>
+      <span class="tech-tag n3">N3</span>
+    </div>
+    <div class="tech-card fade-up">
+      <div class="tech-icon green">📞</div>
+      <h3>Omnichannel Integrado</h3>
+      <p>Atendimento unificado via WhatsApp Business, Chat Online, Voz (URA/PABX), E-mail e App. Histórico consolidado por cliente.</p>
+      <span class="tech-tag n1">N1</span><span class="tech-tag n2">N2</span>
+    </div>
+  </div>
+</section>
+
+<!-- MATRIZ DE COMPETÊNCIAS -->
+<section id="matriz">
+  <div class="section-header fade-up">
+    <div class="section-tag">Matriz de Competências</div>
+    <h2 class="section-title">O que cada nível resolve</h2>
+    <p class="section-subtitle">Distribua sua demanda com precisão. Cada competência mapeada para o nível certo.</p>
+  </div>
+  <div class="matrix-wrapper fade-up">
+    <table class="matrix">
+      <thead>
+        <tr>
+          <th style="width:35%">Competência / Demanda</th>
+          <th class="th-n1">N1 — Primeiro Contato</th>
+          <th class="th-n2">N2 — Técnico Avançado</th>
+          <th class="th-n3">N3 — Engenharia</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Redefinição de senha / login</td>
+          <td class="matrix-check"><span class="check-yes">●</span> Resolve</td>
+          <td class="matrix-check"><span class="check-no">○</span> —</td>
+          <td class="matrix-check"><span class="check-no">○</span> —</td>
+        </tr>
+        <tr>
+          <td>Lentidão / sem conexão básica</td>
+          <td class="matrix-check"><span class="check-yes">●</span> Resolve</td>
+          <td class="matrix-check"><span class="check-partial">◑</span> Escalação</td>
+          <td class="matrix-check"><span class="check-no">○</span> —</td>
+        </tr>
+        <tr>
+          <td>Troubleshooting GPON/ONU</td>
+          <td class="matrix-check"><span class="check-partial">◑</span> Parcial</td>
+          <td class="matrix-check"><span class="check-yes">●</span> Resolve</td>
+          <td class="matrix-check"><span class="check-no">○</span> —</td>
+        </tr>
+        <tr>
+          <td>Configuração PPPoE/CGNAT/VPN</td>
+          <td class="matrix-check"><span class="check-no">○</span> —</td>
+          <td class="matrix-check"><span class="check-yes">●</span> Resolve</td>
+          <td class="matrix-check"><span class="check-partial">◑</span> Valida</td>
+        </tr>
+        <tr>
+          <td>Análise de logs e eventos BGP</td>
+          <td class="matrix-check"><span class="check-no">○</span> —</td>
+          <td class="matrix-check"><span class="check-yes">●</span> Resolve</td>
+          <td class="matrix-check"><span class="check-yes">●</span> Audita</td>
+        </tr>
+        <tr>
+          <td>Incidentes e quedas massivas</td>
+          <td class="matrix-check"><span class="check-partial">◑</span> Notifica</td>
+          <td class="matrix-check"><span class="check-yes">●</span> Coordena</td>
+          <td class="matrix-check"><span class="check-yes">●</span> Resolve</td>
+        </tr>
+        <tr>
+          <td>Root Cause Analysis (RCA)</td>
+          <td class="matrix-check"><span class="check-no">○</span> —</td>
+          <td class="matrix-check"><span class="check-partial">◑</span> Contribui</td>
+          <td class="matrix-check"><span class="check-yes">●</span> Lidera</td>
+        </tr>
+        <tr>
+          <td>Arquitetura e expansão de rede</td>
+          <td class="matrix-check"><span class="check-no">○</span> —</td>
+          <td class="matrix-check"><span class="check-no">○</span> —</td>
+          <td class="matrix-check"><span class="check-yes">●</span> Projeta</td>
+        </tr>
+        <tr>
+          <td>Automação e DevOps de rede</td>
+          <td class="matrix-check"><span class="check-no">○</span> —</td>
+          <td class="matrix-check"><span class="check-partial">◑</span> Executa</td>
+          <td class="matrix-check"><span class="check-yes">●</span> Desenvolve</td>
+        </tr>
+        <tr>
+          <td>Treinamento e onboarding</td>
+          <td class="matrix-check"><span class="check-yes">●</span> Recebe</td>
+          <td class="matrix-check"><span class="check-yes">●</span> Ministra</td>
+          <td class="matrix-check"><span class="check-yes">●</span> Certifica</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div style="text-align:center; margin-top:20px;">
+    <p style="font-size:13px; color:var(--text-secondary);">
+      <span style="color:var(--green)">●</span> Responsável principal &nbsp;&nbsp;
+      <span style="color:var(--amber)">◑</span> Participa/Suporta &nbsp;&nbsp;
+      <span style="color:var(--text-muted)">○</span> Não atua
+    </p>
+  </div>
+</section>
+
+<!-- MÉTRICAS -->
+<section id="metricas">
+  <div class="section-header fade-up">
+    <div class="section-tag">Métricas de Eficiência</div>
+    <h2 class="section-title">Resultados que falam por si</h2>
+    <p class="section-subtitle">KPIs reais medidos na nossa operação. Monitoramento contínuo e transparência total para o cliente.</p>
+  </div>
+  <div class="metrics-grid">
+    <div class="metric-card green fade-up">
+      <span class="metric-icon">🎯</span>
+      <div class="metric-value green"><span class="counter" data-target="92">0</span><span class="metric-suffix">%</span></div>
+      <div class="metric-label">FCR N1</div>
+      <div class="metric-sublabel">First Call Resolution — resolução no primeiro contato</div>
+    </div>
+    <div class="metric-card amber fade-up">
+      <span class="metric-icon">⚡</span>
+      <div class="metric-value amber"><span class="counter" data-target="43">0</span><span class="metric-suffix">s</span></div>
+      <div class="metric-label">TMA Médio</div>
+      <div class="metric-sublabel">Tempo médio de atendimento ativo por chamada</div>
+    </div>
+    <div class="metric-card green fade-up">
+      <span class="metric-icon">📋</span>
+      <div class="metric-value green"><span class="counter" data-target="99">0</span><span class="metric-suffix">%</span></div>
+      <div class="metric-label">SLA Cumprido</div>
+      <div class="metric-sublabel">Percentual de acordos de nível de serviço dentro do prazo</div>
+    </div>
+    <div class="metric-card blue fade-up">
+      <span class="metric-icon">😊</span>
+      <div class="metric-value blue"><span class="counter" data-target="87">0</span><span class="metric-suffix">%</span></div>
+      <div class="metric-label">CSAT Score</div>
+      <div class="metric-sublabel">Satisfação do cliente final com o atendimento recebido</div>
+    </div>
+    <div class="metric-card rose fade-up">
+      <span class="metric-icon">🕐</span>
+      <div class="metric-value rose"><span style="font-size:2rem">&lt;</span><span class="counter" data-target="2">0</span><span class="metric-suffix">min</span></div>
+      <div class="metric-label">Tempo de Espera</div>
+      <div class="metric-sublabel">Tempo médio na fila antes do atendimento humano</div>
+    </div>
+    <div class="metric-card amber fade-up">
+      <span class="metric-icon">📈</span>
+      <div class="metric-value amber"><span class="counter" data-target="35">0</span><span class="metric-suffix">%</span></div>
+      <div class="metric-label">Redução de Custos</div>
+      <div class="metric-sublabel">Economia média vs. equipe interna contratada</div>
+    </div>
+  </div>
+
+  <div class="metrics-bottom fade-up">
+    <div>
+      <h3>Taxa de resolução por nível de suporte</h3>
+      <p>Distribuição das demandas resolvidas em cada camada do framework operacional, sem necessidade de escalação superior.</p>
+      <div class="metrics-chart">
+        <div class="chart-row">
+          <span class="chart-label">Nível 1</span>
+          <div class="chart-bar-bg"><div class="chart-bar n1" style="width:92%"></div></div>
+          <span class="chart-pct">92%</span>
+        </div>
+        <div class="chart-row">
+          <span class="chart-label">Nível 2</span>
+          <div class="chart-bar-bg"><div class="chart-bar n2" style="width:75%; animation-delay:0.2s"></div></div>
+          <span class="chart-pct">75%</span>
+        </div>
+        <div class="chart-row">
+          <span class="chart-label">Nível 3</span>
+          <div class="chart-bar-bg"><div class="chart-bar n3" style="width:98%; animation-delay:0.4s"></div></div>
+          <span class="chart-pct">98%</span>
+        </div>
+      </div>
+    </div>
+    <div class="metrics-text">
+      <h3>Por que provedores escolhem a Mcall?</h3>
+      <p>Nossa estrutura é projetada para o DNA do ISP. Conhecemos OLTs, sabemos configurar PPPoE, entendemos de GPON. Não somos um call center genérico — somos especialistas em provedor de internet.</p>
+      <button class="btn-primary" onclick="document.getElementById('modalOverlay').classList.add('active')" style="width:100%; justify-content:center;">
+        Solicitar Diagnóstico Gratuito
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section id="contato">
+  <div class="contact-grid">
+    <div class="contact-info fade-up">
+      <div class="section-tag">Fale Conosco</div>
+      <h2>Vamos transformar seu suporte?</h2>
+      <p>Fale com um consultor especialista. Diagnóstico gratuito da sua operação em até 24h.</p>
+      <div class="contact-links">
+        <a class="contact-link" href="https://wa.me/5511999999999?text=Olá, vim pelo site e gostaria de saber mais sobre os serviços da Mcall Solutions" target="_blank">
+          <div class="contact-link-icon green">📱</div>
+          <div>
+            <div style="font-weight:600; font-size:14px">WhatsApp Comercial</div>
+            <div style="font-size:12px; color:var(--text-secondary); margin-top:1px">Resposta em até 15 minutos</div>
+          </div>
+        </a>
+        <a class="contact-link" href="mailto:contato@mcallsolutions.com.br">
+          <div class="contact-link-icon blue">📧</div>
+          <div>
+            <div style="font-weight:600; font-size:14px">contato@mcallsolutions.com.br</div>
+            <div style="font-size:12px; color:var(--text-secondary); margin-top:1px">Para propostas e contratos</div>
+          </div>
+        </a>
+        <a class="contact-link" href="https://linkedin.com" target="_blank">
+          <div class="contact-link-icon blue">💼</div>
+          <div>
+            <div style="font-weight:600; font-size:14px">LinkedIn</div>
+            <div style="font-size:12px; color:var(--text-secondary); margin-top:1px">Mcall Solutions</div>
+          </div>
+        </a>
+        <a class="contact-link" href="https://instagram.com" target="_blank">
+          <div class="contact-link-icon insta">📸</div>
+          <div>
+            <div style="font-weight:600; font-size:14px">Instagram</div>
+            <div style="font-size:12px; color:var(--text-secondary); margin-top:1px">@mcallsolutions</div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="form-card fade-up">
+      <h3>📋 Solicitar Diagnóstico Gratuito</h3>
+      <div class="form-group">
+        <label>Nome Completo</label>
+        <input type="text" placeholder="João Silva"/>
+      </div>
+      <div class="form-group">
+        <label>Empresa / Provedor</label>
+        <input type="text" placeholder="ISP Internet LTDA"/>
+      </div>
+      <div class="form-group">
+        <label>WhatsApp</label>
+        <input type="tel" placeholder="(11) 99999-9999"/>
+      </div>
+      <div class="form-group">
+        <label>Volume de Clientes</label>
+        <select>
+          <option value="">Selecione...</option>
+          <option>Até 1.000 clientes</option>
+          <option>1.000 – 10.000 clientes</option>
+          <option>10.000 – 50.000 clientes</option>
+          <option>50.000 – 200.000 clientes</option>
+          <option>Mais de 200.000 clientes</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Qual nível de suporte você precisa?</label>
+        <select>
+          <option value="">Selecione...</option>
+          <option>N1 — Primeiro Contato</option>
+          <option>N2 — Técnico Avançado</option>
+          <option>N3 — Engenharia</option>
+          <option>Pacote Completo N1+N2+N3</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Mensagem (opcional)</label>
+        <textarea placeholder="Descreva brevemente sua necessidade..."></textarea>
+      </div>
+      <button class="form-submit" onclick="handleFormSubmit(this)">
+        📋 Enviar e Solicitar Diagnóstico
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="https://media.base44.com/images/public/user_69fbdc6b3276b34737a7566c/f1c822420_WhatsAppImage2026-05-06at211424.jpg" alt="Mcall Solutions" onerror="this.style.display='none'"/>
+      <p>Especialistas em outsourcing de atendimento técnico para provedores de internet. Framework N1·N2·N3 com SLA garantido.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Serviços</h4>
+      <ul>
+        <li><a href="#planos">Suporte N1</a></li>
+        <li><a href="#planos">Suporte N2</a></li>
+        <li><a href="#planos">Engenharia N3</a></li>
+        <li><a href="#detalhe">NOC 24/7</a></li>
+        <li><a href="#detalhe">Gestão de Tickets</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Links</h4>
+      <ul>
+        <li><a href="#matriz">Matriz de Competências</a></li>
+        <li><a href="#metricas">Métricas</a></li>
+        <li><a href="#contato">Contato</a></li>
+        <li><a href="https://wa.me/5511999999999" target="_blank">WhatsApp</a></li>
+        <li><a href="mailto:contato@mcallsolutions.com.br">E-mail</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Mcall Solutions. Todos os direitos reservados.</p>
+    <div class="footer-socials">
+      <a class="footer-social" href="https://wa.me/5511999999999" target="_blank" title="WhatsApp">📱</a>
+      <a class="footer-social" href="https://linkedin.com" target="_blank" title="LinkedIn">💼</a>
+      <a class="footer-social" href="https://instagram.com" target="_blank" title="Instagram">📸</a>
+    </div>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)this.classList.remove('active')">
+  <div class="modal">
+    <button class="modal-close" onclick="document.getElementById('modalOverlay').classList.remove('active')">✕</button>
+    <h2>🚀 Solicitar Diagnóstico</h2>
+    <p>Escolha como prefere iniciar. Um consultor especialista em ISP irá te atender.</p>
+    <div class="modal-options">
+      <a class="modal-option" href="https://wa.me/5511999999999?text=Olá! Vim pelo site da Mcall Solutions e gostaria de solicitar um diagnóstico gratuito para meu provedor." target="_blank">
+        <span class="modal-option-icon">📱</span>
+        <div>
+          <div style="font-weight:700">WhatsApp Direto</div>
+          <div style="font-size:13px; font-weight:400; color:var(--text-secondary); margin-top:2px">Fale agora, resposta em até 15 min</div>
+        </div>
+      </a>
+      <a class="modal-option" href="#contato" onclick="document.getElementById('modalOverlay').classList.remove('active')">
+        <span class="modal-option-icon">📋</span>
+        <div>
+          <div style="font-weight:700">Preencher Formulário</div>
+          <div style="font-size:13px; font-weight:400; color:var(--text-secondary); margin-top:2px">Detalhes completos, retorno em 24h</div>
+        </div>
+      </a>
+      <a class="modal-option" href="mailto:contato@mcallsolutions.com.br?subject=Diagnóstico Gratuito — ISP&body=Olá equipe Mcall, gostaria de agendar um diagnóstico gratuito para meu provedor.">
+        <span class="modal-option-icon">📧</span>
+        <div>
+          <div style="font-weight:700">Enviar E-mail</div>
+          <div style="font-size:13px; font-weight:400; color:var(--text-secondary); margin-top:2px">Para propostas e contratos formais</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+// Scroll animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 80);
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// Counter animation
+function animateCounter(el) {
+  const target = parseInt(el.dataset.target);
+  const duration = 1800;
+  const start = performance.now();
+  const update = (now) => {
+    const elapsed = now - start;
+    const progress = Math.min(elapsed / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    el.textContent = Math.round(eased * target);
+    if (progress < 1) requestAnimationFrame(update);
+  };
+  requestAnimationFrame(update);
+}
+
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.querySelectorAll('.counter').forEach(animateCounter);
+      counterObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.3 });
+
+document.querySelectorAll('.metrics-grid').forEach(el => counterObserver.observe(el));
+
+// Form submit
+function handleFormSubmit(btn) {
+  const nome = btn.closest('.form-card').querySelector('input[type=text]').value;
+  const empresa = btn.closest('.form-card').querySelectorAll('input[type=text]')[1]?.value;
+  const tel = btn.closest('.form-card').querySelector('input[type=tel]').value;
+  
+  if (!nome || !tel) { 
+    btn.textContent = '⚠️ Preencha nome e WhatsApp';
+    btn.style.background = '#F43F5E';
+    setTimeout(() => { btn.innerHTML = '📋 Enviar e Solicitar Diagnóstico'; btn.style.background = ''; }, 2500);
+    return;
+  }
+  
+  const msg = encodeURIComponent(`Olá! Me chamo ${nome}, sou da empresa ${empresa || 'ISP'}. Vim pelo site da Mcall Solutions e gostaria de solicitar um diagnóstico gratuito. Meu WhatsApp: ${tel}`);
+  window.open(`https://wa.me/5511999999999?text=${msg}`, '_blank');
+  btn.innerHTML = '✅ Redirecionando para WhatsApp...';
+  btn.style.background = 'var(--green-dark)';
+}
+
+// Smooth scroll nav
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const id = a.getAttribute('href');
+    if (id === '#') return;
+    const el = document.querySelector(id);
+    if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  });
+});
+
+// Nav scroll effect
+const nav = document.querySelector('nav');
+window.addEventListener('scroll', () => {
+  nav.style.background = window.scrollY > 50
+    ? 'rgba(2,6,23,0.96)'
+    : 'rgba(2,6,23,0.85)';
+});
+</script>
+</body>
+</html>
