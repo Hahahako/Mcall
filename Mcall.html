@@ -74,7 +74,7 @@ nav {
 }
 nav.scrolled { background:rgba(3,9,18,0.97); }
 .nav-logo { display:flex; align-items:center; gap:12px; }
-.nav-logo img { height:34px; object-fit:contain; }
+.nav-logo img { height:46px; width:auto; object-fit:contain; display:block; }
 .nav-logo-text { font-family:'Oswald',sans-serif; font-size:18px; font-weight:700; color:var(--text-1); letter-spacing:-0.01em; }
 .nav-logo-text span { color:var(--green); }
 .nav-links { display:flex; align-items:center; gap:28px; list-style:none; }
@@ -178,7 +178,7 @@ section { padding:120px 5%; }
 .pulse-dot { width:6px; height:6px; border-radius:50%; background:var(--green); animation:pulseDot 2s infinite; }
 @keyframes pulseDot { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:0.4;transform:scale(1.4);} }
 .hero-logo { margin-bottom:32px; }
-.hero-logo img { height:56px; object-fit:contain; filter:drop-shadow(0 0 24px rgba(0,229,176,0.45)); }
+.hero-logo img { height:104px; width:auto; object-fit:contain; filter:drop-shadow(0 0 24px rgba(0,229,176,0.45)); }
 h1.hero-title {
   font-size:clamp(2.6rem,6vw,5rem);
   font-weight:800; letter-spacing:-0.04em; line-height:1.05;
@@ -436,69 +436,194 @@ h1.hero-title {
    PACOTES / PLANOS
 ══════════════════════════════ */
 #planos { background:var(--bg); }
-.planos-header { text-align:center; margin-bottom:72px; }
+.planos-header { text-align:center; margin-bottom:56px; }
 .planos-header .section-label { justify-content:center; }
 .planos-header .section-label::before { display:none; }
-.planos-note {
-  display:inline-flex; align-items:center; gap:8px;
-  background:var(--green-glow); border:1px solid var(--green-border);
-  border-radius:8px; padding:10px 20px; font-size:13px; color:var(--green);
-  font-weight:500; margin-top:20px;
+
+.pl-console {
+  max-width:1180px; margin:0 auto;
+  border:1px solid var(--border-light); border-radius:var(--radius);
+  background:var(--bg-2); overflow:hidden;
 }
-.planos-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:12px; margin-bottom:60px; }
-.plano-card {
-  background:var(--card); border:1px solid var(--border);
-  border-radius:var(--radius); padding:28px 20px;
-  text-align:center; transition:all var(--transition);
-  display:flex; flex-direction:column; gap:16px;
-  position:relative;
+
+/* — Seletor de volume — */
+.pl-dial {
+  display:grid; grid-template-columns:minmax(0,5fr) minmax(0,7fr);
+  gap:56px; align-items:center;
+  padding:32px 40px 28px; border-bottom:1px solid var(--border-light);
+  background:linear-gradient(180deg, rgba(0,229,176,0.06), transparent 90%);
 }
-.plano-card.featured {
-  border-color:var(--green-border-strong);
-  background:rgba(0,229,176,0.05);
-}
-.plano-card.featured::after {
-  content:'MAIS POPULAR'; position:absolute; top:-11px; left:50%; transform:translateX(-50%);
-  font-size:9px; font-weight:800; letter-spacing:0.12em;
-  background:var(--green); color:var(--bg); padding:3px 12px; border-radius:100px;
-}
-.plano-card:hover:not(.featured) { border-color:var(--green-border); transform:translateY(-4px); }
-.plano-card.featured:hover { transform:translateY(-4px); }
-.plano-badge {
-  font-size:11px; font-weight:600; color:var(--text-3); letter-spacing:0.05em;
-  text-transform:uppercase; background:var(--card); border:1px solid var(--border);
-  border-radius:6px; padding:4px 10px; display:inline-block;
-}
-.plano-price {
+.pl-dial-q { display:block; font-size:14px; color:var(--text-2); margin-bottom:10px; }
+.pl-readout { display:flex; align-items:baseline; gap:12px; }
+.pl-readout output {
   font-family:'Oswald',sans-serif; font-weight:800; line-height:1;
+  font-size:clamp(2.6rem,5vw,3.8rem); color:var(--text-1);
+  font-variant-numeric:tabular-nums; min-width:3ch;
 }
-.plano-price .currency { font-size:1rem; color:var(--text-2); vertical-align:super; margin-right:2px; }
-.plano-price .value { font-size:2.2rem; color:var(--text-1); }
-.plano-price .period { font-size:0.85rem; color:var(--text-3); font-weight:500; }
-.plano-price.custom .value { font-size:1.4rem; color:var(--green); }
-.plano-atend {
-  font-size:13px; color:var(--text-2); font-weight:500;
-  border-top:1px solid var(--border); padding-top:14px;
+.pl-readout span { font-size:14px; color:var(--text-3); }
+.pl-hint { margin-top:12px; font-size:13px; line-height:1.6; color:var(--text-2); min-height:3.2em; max-width:46ch; }
+
+.pl-range { position:relative; padding-bottom:46px; --thumb:24px; }
+.pl-range input[type=range] {
+  -webkit-appearance:none; appearance:none;
+  display:block; width:100%; height:var(--thumb); margin:0; cursor:pointer;
+  background:
+    linear-gradient(90deg, var(--green) 0, var(--green) calc(var(--v,0.33) * (100% - var(--thumb)) + var(--thumb) / 2), rgba(255,255,255,0.12) 0)
+    center / 100% 6px no-repeat;
+  outline:none;
 }
-.plano-atend strong { color:var(--text-1); }
-.plano-atend-label { font-size:11px; color:var(--text-3); margin-top:3px; }
-.plano-cta {
-  width:100%; padding:10px; border-radius:8px;
-  font-family:'Oswald',sans-serif; font-size:13px; font-weight:700;
-  cursor:pointer; transition:all var(--transition); border:none;
-  background:transparent; border:1px solid var(--border-light); color:var(--text-2);
+.pl-range input[type=range]::-webkit-slider-runnable-track { background:transparent; height:var(--thumb); }
+.pl-range input[type=range]::-moz-range-track { background:transparent; height:var(--thumb); }
+.pl-range input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance:none; appearance:none;
+  width:var(--thumb); height:var(--thumb); border-radius:50%;
+  background:var(--green); border:4px solid var(--bg-2);
+  box-shadow:0 0 0 1px var(--green), 0 0 24px rgba(0,229,176,0.55);
+  transition:transform 0.2s;
 }
-.plano-cta:hover { border-color:var(--green); color:var(--green); }
-.plano-card.featured .plano-cta { background:var(--green); color:var(--bg); border-color:transparent; }
-.plano-card.featured .plano-cta:hover { background:var(--green-dim); }
-.planos-footer {
-  background:var(--card); border:1px solid var(--border);
-  border-radius:var(--radius); padding:32px; text-align:center;
-  display:flex; align-items:center; justify-content:center; gap:20px; flex-wrap:wrap;
+.pl-range input[type=range]::-moz-range-thumb {
+  width:calc(var(--thumb) - 8px); height:calc(var(--thumb) - 8px); border-radius:50%;
+  background:var(--green); border:4px solid var(--bg-2);
+  box-shadow:0 0 0 1px var(--green), 0 0 24px rgba(0,229,176,0.55);
 }
-.planos-footer-icon { font-size:24px; }
-.planos-footer p { font-size:14px; color:var(--text-2); line-height:1.7; }
-.planos-footer p strong { color:var(--text-1); }
+.pl-range input[type=range]:active::-webkit-slider-thumb { transform:scale(1.15); }
+.pl-range input[type=range]:focus-visible::-webkit-slider-thumb { box-shadow:0 0 0 3px var(--bg-2), 0 0 0 5px var(--green); }
+.pl-range input[type=range]:focus-visible::-moz-range-thumb { box-shadow:0 0 0 3px var(--bg-2), 0 0 0 5px var(--green); }
+.pl-ticks { position:absolute; left:0; right:0; top:34px; height:0; }
+.pl-tick {
+  position:absolute; top:0; left:calc(var(--p) * (100% - var(--thumb)) + var(--thumb) / 2);
+  transform:translateX(-50%);
+  display:flex; flex-direction:column; align-items:center; gap:1px;
+  background:none; border:0; padding:0; cursor:pointer;
+  font-family:'Oswald',sans-serif; font-size:13px; font-weight:700; color:var(--text-3);
+  transition:color 0.25s;
+}
+.pl-tick::before { content:''; width:1px; height:8px; margin-bottom:4px; background:var(--border-light); transition:background 0.25s; }
+.pl-tick small { font-family:'DM Sans',sans-serif; font-size:11px; font-weight:500; white-space:nowrap; }
+.pl-tick:hover { color:var(--text-1); }
+.pl-tick.is-on { color:var(--green); }
+.pl-tick.is-on::before { background:var(--green); }
+
+/* — Lista de planos — */
+.pl-body { display:grid; grid-template-columns:340px minmax(0,1fr); }
+.pl-side { display:flex; flex-direction:column; border-right:1px solid var(--border-light); }
+.pl-tabs { display:flex; flex-direction:column; }
+.pl-tab {
+  -webkit-appearance:none; appearance:none;
+  position:relative; display:grid; gap:6px; text-align:left;
+  padding:22px 28px; background:transparent; color:inherit; font:inherit;
+  border:0; border-bottom:1px solid var(--border); cursor:pointer;
+  transition:background 0.25s;
+}
+.pl-tab::before {
+  content:''; position:absolute; left:0; top:0; bottom:0; width:3px;
+  background:var(--green); transform:scaleY(0); transition:transform 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+.pl-tab:hover { background:rgba(255,255,255,0.03); }
+.pl-tab[aria-selected="true"] { background:color-mix(in srgb, var(--green) 9%, var(--bg-2)); }
+.pl-tab[aria-selected="true"]::before { transform:scaleY(1); }
+.pl-tab:focus-visible { outline:2px solid var(--green); outline-offset:-2px; }
+.pl-tab-name { font-family:'Oswald',sans-serif; font-size:1.05rem; font-weight:700; color:var(--text-1); }
+.pl-tab-price { font-family:'Oswald',sans-serif; font-size:1.7rem; font-weight:800; line-height:1.1; color:var(--text-1); font-variant-numeric:tabular-nums; }
+.pl-tab-price small { font-size:13px; font-weight:500; color:var(--text-3); margin-left:2px; }
+.pl-tab[aria-selected="true"] .pl-tab-price { color:var(--green); }
+.pl-tab-meta { display:flex; justify-content:space-between; gap:12px; font-size:12px; color:var(--text-3); }
+.pl-tab-bar { display:block; height:4px; border-radius:2px; background:rgba(255,255,255,0.07); overflow:hidden; }
+.pl-tab-bar i { display:block; height:100%; width:var(--w); border-radius:2px; background:rgba(255,255,255,0.28); transition:background 0.3s; }
+.pl-tab[aria-selected="true"] .pl-tab-bar i { background:var(--green); }
+.pl-tabs-note { margin-top:auto; padding:18px 28px; font-size:11.5px; line-height:1.6; color:var(--text-3); }
+
+/* — Palco do plano selecionado — */
+.pl-stage {
+  position:relative; padding:40px; min-height:600px;
+  background:
+    radial-gradient(520px circle at var(--mx,72%) var(--my,8%), rgba(0,229,176,0.10), transparent 62%),
+    var(--bg-3);
+}
+.pl-panel { display:grid; grid-template-columns:minmax(0,1.05fr) minmax(0,1fr); gap:44px; }
+.pl-panel[hidden] { display:none; }
+.pl-titlerow { display:flex; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:10px; }
+.pl-name { font-family:'Oswald',sans-serif; font-size:2rem; font-weight:800; letter-spacing:-0.02em; color:var(--text-1); }
+.pl-flag {
+  font-size:12px; font-weight:600; color:var(--green);
+  background:var(--green-glow); border:1px solid var(--green-border);
+  border-radius:100px; padding:3px 12px;
+}
+.pl-price { display:flex; align-items:baseline; gap:6px; margin-bottom:26px; }
+.pl-cur { font-family:'Oswald',sans-serif; font-size:1.3rem; font-weight:600; color:var(--text-2); }
+.pl-amount { font-family:'Oswald',sans-serif; font-size:clamp(2.8rem,5vw,3.8rem); font-weight:800; line-height:1; color:var(--text-1); font-variant-numeric:tabular-nums; }
+.pl-per { font-size:15px; color:var(--text-3); }
+.pl-facts { display:grid; grid-template-columns:repeat(3,auto); justify-content:start; gap:12px 36px; margin-bottom:32px; padding-bottom:28px; border-bottom:1px solid var(--border); }
+.pl-facts dt { font-size:12px; color:var(--text-3); margin-bottom:4px; }
+.pl-facts dd { font-family:'Oswald',sans-serif; font-size:1.2rem; font-weight:700; color:var(--text-1); display:flex; align-items:center; gap:8px; white-space:nowrap; }
+.pl-facts dd small { font-family:'DM Sans',sans-serif; font-size:12px; font-weight:400; color:var(--text-3); }
+.pl-seats { display:inline-flex; gap:3px; }
+.pl-seats i { width:8px; height:8px; border-radius:50%; background:var(--green); box-shadow:0 0 8px rgba(0,229,176,0.6); }
+
+/* Grade de cobertura: dias × horas */
+.pl-cover-head { display:flex; align-items:baseline; justify-content:space-between; gap:12px; margin-bottom:14px; }
+.pl-cover-head h4 { font-family:'Oswald',sans-serif; font-size:1rem; font-weight:700; color:var(--text-1); }
+.pl-cover-hours { font-family:'Oswald',sans-serif; font-size:1.05rem; font-weight:700; color:var(--green); }
+.pl-grid { display:grid; grid-template-columns:34px repeat(14,minmax(0,1fr)); gap:3px; align-items:center; }
+.pl-grid .hl { font-size:10.5px; color:var(--text-3); white-space:nowrap; padding-bottom:3px; }
+.pl-grid .dl { font-size:11px; color:var(--text-3); }
+.pl-grid .c { height:17px; border-radius:3px; background:rgba(255,255,255,0.045); }
+.pl-grid .c.on { transform:scale(0.55); transition:background 0.4s ease var(--d,0ms), transform 0.4s cubic-bezier(0.3,1.4,0.5,1) var(--d,0ms); }
+.pl-panel.is-in .pl-grid .c.on { background:var(--green); transform:scale(1); box-shadow:0 0 10px rgba(0,229,176,0.25); }
+.pl-grid .c.now { position:relative; outline:2px solid var(--white); outline-offset:1px; animation:plNow 1.8s ease-in-out infinite; }
+@keyframes plNow { 0%,100%{outline-color:rgba(255,255,255,0.95);} 50%{outline-color:rgba(255,255,255,0.25);} }
+.pl-cover-cap { margin-top:14px; font-size:13px; color:var(--text-2); }
+.pl-now { margin-top:4px; font-size:12px; color:var(--text-3); }
+.pl-now[data-live="true"] { color:var(--green); }
+
+/* Inclusões */
+.pl-inc h4 { font-family:'Oswald',sans-serif; font-size:1rem; font-weight:700; color:var(--text-1); margin-bottom:16px; }
+.pl-inc ul { list-style:none; display:grid; gap:12px; }
+.pl-inc li { display:flex; gap:12px; font-size:14px; line-height:1.55; color:var(--text-2); }
+.pl-inc li::before {
+  content:''; flex:0 0 18px; height:18px; margin-top:2px; border-radius:50%;
+  background:var(--green-glow) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath d='M2 5.2l2 2L8 3' fill='none' stroke='%2300e5b0' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 11px no-repeat;
+  border:1px solid var(--green-border);
+}
+.pl-inc.is-no { margin-top:28px; padding-top:24px; border-top:1px solid var(--border); }
+.pl-inc.is-no li::before {
+  background:rgba(244,63,94,0.1) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath d='M2.8 2.8l4.4 4.4M7.2 2.8L2.8 7.2' fill='none' stroke='%23f43f5e' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E") center / 11px no-repeat;
+  border-color:rgba(244,63,94,0.25);
+}
+.pl-panel.is-in .pl-inc li { animation:plItem 0.45s cubic-bezier(0.2,0.8,0.2,1) both; animation-delay:calc(var(--i, 0) * 40ms + 120ms); }
+@keyframes plItem { from { opacity:0; transform:translateX(12px); } to { opacity:1; transform:none; } }
+.pl-cta { margin-top:32px; }
+.pl-foot { padding:16px 40px; border-top:1px solid var(--border-light); font-size:12px; color:var(--text-3); }
+
+@media(max-width:1100px) {
+  .pl-body { grid-template-columns:290px minmax(0,1fr); }
+  .pl-panel { grid-template-columns:1fr; gap:36px; }
+}
+@media(max-width:900px) {
+  .pl-dial { grid-template-columns:1fr; gap:28px; padding:28px 24px 24px; }
+  .pl-hint { min-height:0; }
+  .pl-body { grid-template-columns:1fr; }
+  .pl-side { border-right:0; border-bottom:1px solid var(--border-light); }
+  .pl-tabs { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--border); }
+  .pl-tab { background:var(--bg-2); border-bottom:0; padding:18px 20px; }
+  .pl-tab[aria-selected="true"] { background:color-mix(in srgb, var(--green) 9%, var(--bg-2)); }
+  .pl-tab::before { top:auto; right:0; width:auto; height:3px; transform:scaleX(0); }
+  .pl-tab[aria-selected="true"]::before { transform:scaleX(1); }
+  .pl-tabs-note { padding:14px 20px; }
+  .pl-stage { padding:28px 24px; min-height:0; }
+  .pl-foot { padding:16px 24px; }
+}
+@media(max-width:560px) {
+  .pl-tabs { grid-template-columns:1fr; }
+  .pl-tick small { display:none; }
+  .pl-facts { grid-template-columns:1fr 1fr; }
+  .pl-grid { grid-template-columns:28px repeat(14,minmax(0,1fr)); gap:2px; }
+  .pl-cover-head { flex-direction:column; gap:2px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .pl-console *, .pl-console *::before { transition:none !important; animation:none !important; }
+  .pl-grid .c.on { transform:none; }
+}
 
 /* EXCEDENTES */
 .excedentes-title {
@@ -646,7 +771,7 @@ footer {
   padding:60px 5% 32px;
 }
 .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:60px; margin-bottom:48px; }
-.footer-brand img { height:36px; object-fit:contain; margin-bottom:20px; }
+.footer-brand img { height:72px; width:auto; object-fit:contain; margin-bottom:20px; }
 .footer-brand-name { font-family:'Oswald',sans-serif; font-size:1.1rem; font-weight:700; color:var(--text-1); margin-bottom:12px; }
 .footer-brand-name span { color:var(--green); }
 .footer-brand p { font-size:13px; color:var(--text-3); line-height:1.75; }
@@ -714,7 +839,6 @@ footer {
    RESPONSIVE
 ══════════════════════════════ */
 @media(max-width:1100px) {
-  .planos-grid { grid-template-columns:repeat(3,1fr); }
   .hero-metrics { grid-template-columns:repeat(2,1fr); }
 }
 @media(max-width:900px) {
@@ -726,7 +850,6 @@ footer {
   .servicos-grid { grid-template-columns:repeat(2,1fr); }
   .produtos-grid { grid-template-columns:1fr; }
   .diferenciais-grid { grid-template-columns:repeat(2,1fr); }
-  .planos-grid { grid-template-columns:repeat(2,1fr); }
   .excedentes-grid { grid-template-columns:1fr; }
   .footer-grid { grid-template-columns:1fr 1fr; }
   .nav-links { display:none; }
@@ -738,7 +861,6 @@ footer {
   .section-title { font-size:1.8rem; }
   .servicos-grid { grid-template-columns:1fr; }
   .diferenciais-grid { grid-template-columns:1fr; }
-  .planos-grid { grid-template-columns:1fr; }
   .footer-grid { grid-template-columns:1fr; }
   .hero-metrics { grid-template-columns:repeat(2,1fr); }
   .operacao-stats { grid-template-columns:1fr 1fr; }
@@ -763,10 +885,9 @@ footer {
 <!-- ── NAV ── -->
 <nav id="mainNav">
   <a class="nav-logo" href="#">
-    <img src="C:\Users\NOC\OneDrive\Documentos\GitHub\Mcall\image-Photoroom.png"
+    <img src="mcall-logo.png" width="436" height="172"
          alt="MCALL Solutions"
          onerror="this.style.display='none'"/>
-    <span class="nav-logo-text">MC<span>ALL</span></span>
   </a>
   <ul class="nav-links" id="navLinks">
     <li><a href="#operacao">Operação</a></li>
@@ -795,7 +916,7 @@ footer {
     </div>
 
     <div class="hero-logo fade-up fade-up-d1">
-      <img src="C:\Users\NOC\OneDrive\Documentos\GitHub\Mcall\image-Photoroom.png"
+      <img src="mcall-logo.png" width="436" height="172"
            alt="MCALL Solutions"
            onerror="this.style.display='none'"/>
     </div>
@@ -1139,79 +1260,214 @@ footer {
     <div class="section-label">Pacotes Operacionais</div>
     <h2 class="section-title" id="planos-heading">Planos para cada <span class="accent">tamanho de operação</span></h2>
     <p class="section-subtitle" style="margin:0 auto;text-align:center;max-width:560px;">
-      Todos os planos entregam o mesmo nível de excelência operacional. O que varia é a capacidade e o volume.
+      Escolha pela franquia mensal de atendimentos. Todos os planos incluem 4 posições de atendimento via WhatsApp.
     </p>
-    <div class="planos-note">
-      <span>⏰</span>
-      Atendimento humano das 08h às 22h · Fora desse horário, IA operacional mantém o suporte ativo
-    </div>
   </div>
 
-  <div class="planos-grid">
-    <div class="plano-card fade-up">
-      <span class="plano-badge">Até 2.000 clientes</span>
-      <div class="plano-price">
-        <span class="currency">R$</span><span class="value">7.500</span><span class="period">/mês</span>
+  <div class="pl-console fade-up">
+    <div class="pl-dial">
+      <div class="pl-dial-left">
+        <label class="pl-dial-q" for="plVolume">Quantos atendimentos sua operação recebe por mês?</label>
+        <div class="pl-readout"><output id="plVolumeOut" for="plVolume">300</output><span>atendimentos/mês</span></div>
+        <p class="pl-hint" id="plHint" aria-live="polite">MCALL Essencial cobre esse volume: você usaria 100% dos 300 atendimentos da franquia.</p>
       </div>
-      <div class="plano-atend">
-        <strong>Até 300</strong><br>
-        <span class="plano-atend-label">atendimentos/mês</span>
+      <div class="pl-range">
+        <input type="range" id="plVolume" min="50" max="800" step="10" value="300" style="--v:0.3333" aria-describedby="plHint"/>
+        <div class="pl-ticks">
+        <button type="button" class="pl-tick" style="--p:0.1333" data-plan="start" tabindex="-1">150<small>Start</small></button>
+        <button type="button" class="pl-tick is-on" style="--p:0.3333" data-plan="essencial" tabindex="-1">300<small>Essencial</small></button>
+        <button type="button" class="pl-tick" style="--p:0.6000" data-plan="performance" tabindex="-1">500<small>Performance</small></button>
+        <button type="button" class="pl-tick" style="--p:0.8667" data-plan="estrategico" tabindex="-1">700<small>Estratégico</small></button>
+        </div>
       </div>
-      <button class="plano-cta" onclick="openModal()">Solicitar proposta</button>
     </div>
 
-    <div class="plano-card fade-up fade-up-d1">
-      <span class="plano-badge">2.000 – 4.000 clientes</span>
-      <div class="plano-price">
-        <span class="currency">R$</span><span class="value">9.500</span><span class="period">/mês</span>
+    <div class="pl-body">
+      <div class="pl-side">
+        <div class="pl-tabs" role="tablist" aria-label="Planos MCALL" aria-orientation="vertical">
+        <button class="pl-tab" role="tab" id="tab-start" aria-controls="panel-start" aria-selected="false" tabindex="-1" data-plan="start" data-name="MCALL Start" data-franchise="150">
+          <span class="pl-tab-name">MCALL Start</span>
+          <span class="pl-tab-price">R$ 1.800<small>/mês</small></span>
+          <span class="pl-tab-meta"><span>150 atendimentos</span><span>R$ 12,00/atend.*</span></span>
+          <span class="pl-tab-bar" aria-hidden="true"><i style="--w:94.7%"></i></span>
+        </button>
+        <button class="pl-tab" role="tab" id="tab-essencial" aria-controls="panel-essencial" aria-selected="true" tabindex="0" data-plan="essencial" data-name="MCALL Essencial" data-franchise="300">
+          <span class="pl-tab-name">MCALL Essencial</span>
+          <span class="pl-tab-price">R$ 3.800<small>/mês</small></span>
+          <span class="pl-tab-meta"><span>300 atendimentos</span><span>R$ 12,67/atend.*</span></span>
+          <span class="pl-tab-bar" aria-hidden="true"><i style="--w:100.0%"></i></span>
+        </button>
+        <button class="pl-tab" role="tab" id="tab-performance" aria-controls="panel-performance" aria-selected="false" tabindex="-1" data-plan="performance" data-name="MCALL Performance" data-franchise="500">
+          <span class="pl-tab-name">MCALL Performance</span>
+          <span class="pl-tab-price">R$ 4.800<small>/mês</small></span>
+          <span class="pl-tab-meta"><span>500 atendimentos</span><span>R$ 9,60/atend.*</span></span>
+          <span class="pl-tab-bar" aria-hidden="true"><i style="--w:75.8%"></i></span>
+        </button>
+        <button class="pl-tab" role="tab" id="tab-estrategico" aria-controls="panel-estrategico" aria-selected="false" tabindex="-1" data-plan="estrategico" data-name="MCALL Estratégico" data-franchise="700">
+          <span class="pl-tab-name">MCALL Estratégico</span>
+          <span class="pl-tab-price">R$ 6.000<small>/mês</small></span>
+          <span class="pl-tab-meta"><span>700 atendimentos</span><span>R$ 8,57/atend.*</span></span>
+          <span class="pl-tab-bar" aria-hidden="true"><i style="--w:67.7%"></i></span>
+        </button>
+        </div>
+        <p class="pl-tabs-note">A barra de cada plano mostra o custo por atendimento: quanto menor, melhor.</p>
       </div>
-      <div class="plano-atend">
-        <strong>Até 500</strong><br>
-        <span class="plano-atend-label">atendimentos/mês</span>
+      <div class="pl-stage">
+      <div class="pl-panel" role="tabpanel" id="panel-start" aria-labelledby="tab-start" hidden>
+        <div class="pl-main">
+          <div class="pl-titlerow">
+            <h3 class="pl-name">MCALL Start</h3>
+          </div>
+          <div class="pl-price"><span class="pl-cur">R$</span><span class="pl-amount" data-value="1800">1.800,00</span><span class="pl-per">/mês</span></div>
+          <dl class="pl-facts">
+            <div><dt>Franquia</dt><dd>150 <small>atendimentos/mês</small></dd></div>
+            <div><dt>Custo por atendimento*</dt><dd>R$ 12,00</dd></div>
+            <div><dt>Posições de atendimento</dt><dd><span class="pl-seats" aria-hidden="true"><i></i><i></i><i></i><i></i></span>4</dd></div>
+          </dl>
+          <div class="pl-cover">
+            <div class="pl-cover-head"><h4>Quando a equipe atende</h4><span class="pl-cover-hours">50 h por semana</span></div>
+            <div class="pl-grid" data-days="0,1,2,3,4" data-from="8" data-to="18" aria-hidden="true"></div>
+            <p class="pl-cover-cap">Segunda a sexta, das 08h às 18h (via WhatsApp)</p>
+            <p class="pl-now"></p>
+          </div>
+        </div>
+        <div class="pl-inc-wrap">
+          <div class="pl-inc">
+            <h4>O que inclui</h4>
+            <ul>
+              <li>Suporte técnico N1 e diagnósticos básicos de conexão</li>
+              <li>Orientações sobre Wi-Fi, sinal, DNS e reinicialização de equipamentos</li>
+              <li>Abertura e encaminhamento qualificado de O.S. no IXC</li>
+              <li>Comunicação e contenção de indisponibilidades massivas previamente informadas</li>
+            </ul>
+          </div>
+          <div class="pl-inc is-no">
+            <h4>Não contempla</h4>
+            <ul>
+              <li>Filas de 2ª via de boletos, PIX e demais demandas financeiras</li>
+              <li>Desbloqueios de confiança ou reativações comerciais vindos das filas de desbloqueio e emissão de boletos</li>
+            </ul>
+          </div>
+          <button class="btn-primary pl-cta" onclick="openModal('MCALL Start')">Solicitar proposta</button>
+        </div>
       </div>
-      <button class="plano-cta" onclick="openModal()">Solicitar proposta</button>
+      <div class="pl-panel" role="tabpanel" id="panel-essencial" aria-labelledby="tab-essencial">
+        <div class="pl-main">
+          <div class="pl-titlerow">
+            <h3 class="pl-name">MCALL Essencial</h3>
+          </div>
+          <div class="pl-price"><span class="pl-cur">R$</span><span class="pl-amount" data-value="3800">3.800,00</span><span class="pl-per">/mês</span></div>
+          <dl class="pl-facts">
+            <div><dt>Franquia</dt><dd>300 <small>atendimentos/mês</small></dd></div>
+            <div><dt>Custo por atendimento*</dt><dd>R$ 12,67</dd></div>
+            <div><dt>Posições de atendimento</dt><dd><span class="pl-seats" aria-hidden="true"><i></i><i></i><i></i><i></i></span>4</dd></div>
+          </dl>
+          <div class="pl-cover">
+            <div class="pl-cover-head"><h4>Quando a equipe atende</h4><span class="pl-cover-hours">98 h por semana</span></div>
+            <div class="pl-grid" data-days="0,1,2,3,4,5,6" data-from="8" data-to="22" aria-hidden="true"></div>
+            <p class="pl-cover-cap">08h às 22h, todos os dias (via WhatsApp)</p>
+            <p class="pl-now"></p>
+          </div>
+        </div>
+        <div class="pl-inc-wrap">
+          <div class="pl-inc">
+            <h4>O que inclui</h4>
+            <ul>
+              <li>Atendimento humanizado via WhatsApp</li>
+              <li>2ª via de boletos, PIX e apoio financeiro, com desbloqueios de confiança e reativações autorizadas</li>
+              <li>Suporte técnico N1 e diagnósticos básicos de conexão</li>
+              <li>Orientações sobre Wi-Fi, sinal, DNS, frequência e velocidade</li>
+              <li>Reconfigurações autorizadas de equipamentos</li>
+              <li>Abertura e encaminhamento qualificado de O.S.</li>
+              <li>Comunicação de indisponibilidades massivas informadas</li>
+              <li>1 ação preventiva mensal (pesquisa de satisfação ou análise de recorrência pontual)</li>
+            </ul>
+          </div>
+          <button class="btn-primary pl-cta" onclick="openModal('MCALL Essencial')">Solicitar proposta</button>
+        </div>
+      </div>
+      <div class="pl-panel" role="tabpanel" id="panel-performance" aria-labelledby="tab-performance" hidden>
+        <div class="pl-main">
+          <div class="pl-titlerow">
+            <h3 class="pl-name">MCALL Performance</h3>
+          </div>
+          <div class="pl-price"><span class="pl-cur">R$</span><span class="pl-amount" data-value="4800">4.800,00</span><span class="pl-per">/mês</span></div>
+          <dl class="pl-facts">
+            <div><dt>Franquia</dt><dd>500 <small>atendimentos/mês</small></dd></div>
+            <div><dt>Custo por atendimento*</dt><dd>R$ 9,60</dd></div>
+            <div><dt>Posições de atendimento</dt><dd><span class="pl-seats" aria-hidden="true"><i></i><i></i><i></i><i></i></span>4</dd></div>
+          </dl>
+          <div class="pl-cover">
+            <div class="pl-cover-head"><h4>Quando a equipe atende</h4><span class="pl-cover-hours">98 h por semana</span></div>
+            <div class="pl-grid" data-days="0,1,2,3,4,5,6" data-from="8" data-to="22" aria-hidden="true"></div>
+            <p class="pl-cover-cap">08h às 22h, todos os dias (via WhatsApp)</p>
+            <p class="pl-now"></p>
+          </div>
+        </div>
+        <div class="pl-inc-wrap">
+          <div class="pl-inc">
+            <h4>O que inclui</h4>
+            <ul>
+              <li>Atendimento humanizado via WhatsApp</li>
+              <li>2ª via de boletos, PIX e apoio financeiro, com desbloqueios de confiança e reativações autorizadas</li>
+              <li>Suporte técnico N1 e diagnósticos básicos de conexão</li>
+              <li>Orientações sobre Wi-Fi, sinal, DNS, frequência e velocidade</li>
+              <li>Reconfigurações autorizadas de equipamentos</li>
+              <li>Abertura e encaminhamento qualificado de O.S.</li>
+              <li>Comunicação de indisponibilidades massivas informadas</li>
+              <li>Diagnósticos técnicos intermediários</li>
+              <li>Identificação proativa de contatos recorrentes</li>
+              <li>Análise de recorrências em atendimentos e ordens de serviço</li>
+              <li>Relatório mensal simplificado</li>
+              <li>2 ações preventivas mensais</li>
+            </ul>
+          </div>
+          <button class="btn-primary pl-cta" onclick="openModal('MCALL Performance')">Solicitar proposta</button>
+        </div>
+      </div>
+      <div class="pl-panel" role="tabpanel" id="panel-estrategico" aria-labelledby="tab-estrategico" hidden>
+        <div class="pl-main">
+          <div class="pl-titlerow">
+            <h3 class="pl-name">MCALL Estratégico</h3>
+            <span class="pl-flag">Menor custo por atendimento</span>
+          </div>
+          <div class="pl-price"><span class="pl-cur">R$</span><span class="pl-amount" data-value="6000">6.000,00</span><span class="pl-per">/mês</span></div>
+          <dl class="pl-facts">
+            <div><dt>Franquia</dt><dd>700 <small>atendimentos/mês</small></dd></div>
+            <div><dt>Custo por atendimento*</dt><dd>R$ 8,57</dd></div>
+            <div><dt>Posições de atendimento</dt><dd><span class="pl-seats" aria-hidden="true"><i></i><i></i><i></i><i></i></span>4</dd></div>
+          </dl>
+          <div class="pl-cover">
+            <div class="pl-cover-head"><h4>Quando a equipe atende</h4><span class="pl-cover-hours">98 h por semana</span></div>
+            <div class="pl-grid" data-days="0,1,2,3,4,5,6" data-from="8" data-to="22" aria-hidden="true"></div>
+            <p class="pl-cover-cap">08h às 22h, todos os dias (via WhatsApp)</p>
+            <p class="pl-now"></p>
+          </div>
+        </div>
+        <div class="pl-inc-wrap">
+          <div class="pl-inc">
+            <h4>O que inclui</h4>
+            <ul>
+              <li>Atendimento humanizado via WhatsApp</li>
+              <li>2ª via de boletos, PIX e apoio financeiro, com desbloqueios de confiança e reativações autorizadas</li>
+              <li>Suporte técnico N1 e diagnósticos básicos de conexão</li>
+              <li>Orientações sobre Wi-Fi, sinal, DNS, frequência e velocidade</li>
+              <li>Reconfigurações autorizadas de equipamentos</li>
+              <li>Abertura e encaminhamento de O.S.</li>
+              <li>Comunicação de indisponibilidades massivas informadas</li>
+              <li>Identificação proativa de situações críticas de rede e atendimento</li>
+              <li>Sinalização de clientes com potencial risco de cancelamento (churn)</li>
+              <li>Análise de recorrências focada em estratégias de retenção</li>
+              <li>Formulação de sugestões de ações para situações identificadas</li>
+              <li>Avaliação da experiência pós-ativação de novos assinantes</li>
+            </ul>
+          </div>
+          <button class="btn-primary pl-cta" onclick="openModal('MCALL Estratégico')">Solicitar proposta</button>
+        </div>
+      </div>
+      </div>
     </div>
-
-    <div class="plano-card featured fade-up fade-up-d2">
-      <span class="plano-badge">4.000 – 6.000 clientes</span>
-      <div class="plano-price">
-        <span class="currency">R$</span><span class="value">12.000</span><span class="period">/mês</span>
-      </div>
-      <div class="plano-atend">
-        <strong>Até 800</strong><br>
-        <span class="plano-atend-label">atendimentos/mês</span>
-      </div>
-      <button class="plano-cta" onclick="openModal()">Solicitar proposta</button>
-    </div>
-
-    <div class="plano-card fade-up fade-up-d3">
-      <span class="plano-badge">6.000 – 8.000 clientes</span>
-      <div class="plano-price">
-        <span class="currency">R$</span><span class="value">16.000</span><span class="period">/mês</span>
-      </div>
-      <div class="plano-atend">
-        <strong>Até 1.300</strong><br>
-        <span class="plano-atend-label">atendimentos/mês</span>
-      </div>
-      <button class="plano-cta" onclick="openModal()">Solicitar proposta</button>
-    </div>
-
-    <div class="plano-card fade-up fade-up-d4">
-      <span class="plano-badge">8.000+ clientes</span>
-      <div class="plano-price custom">
-        <span class="value">Sob Medida</span>
-      </div>
-      <div class="plano-atend">
-        <strong>Volume personalizado</strong><br>
-        <span class="plano-atend-label">capacidade escalável</span>
-      </div>
-      <button class="plano-cta" onclick="openModal()">Falar com especialista</button>
-    </div>
-  </div>
-
-  <div class="planos-footer fade-up">
-    <div class="planos-footer-icon">🛡️</div>
-    <p><strong>Todos os planos incluem:</strong> Integração ERP, IA operacional, dashboard de performance, gestão de chamados, atendimento humano 08h–22h e suporte de melhoria contínua.</p>
+    <p class="pl-foot">* Calculado dividindo o preço mensal pela franquia de atendimentos. Valores mensais.</p>
   </div>
 
   <!-- EXCEDENTES -->
@@ -1468,9 +1724,8 @@ footer {
 <footer role="contentinfo">
   <div class="footer-grid">
     <div class="footer-brand">
-      <img src="https://media.base44.com/images/public/user_69fbdc6b3276b34737a7566c/f1c822420_WhatsAppImage2026-05-06at211424.jpg"
+      <img src="mcall-logo.png" width="436" height="172"
            alt="MCALL Solutions" onerror="this.style.display='none'"/>
-      <div class="footer-brand-name">MC<span>ALL</span> Solutions</div>
       <p>Estrutura operacional inteligente para provedores de internet. Automação, IA aplicada e integração total para operações escaláveis.</p>
       <div class="footer-brand-tags">
         <span class="footer-brand-tag">Especialista ISP</span>
@@ -1527,9 +1782,9 @@ footer {
   <div class="modal">
     <button class="modal-close" onclick="closeModal()" aria-label="Fechar">✕</button>
     <h2>Solicitar Diagnóstico</h2>
-    <p>Escolha como prefere iniciar. Um especialista em ISP vai te atender.</p>
+    <p id="modalLead">Escolha como prefere iniciar. Um especialista em ISP vai te atender.</p>
     <div class="modal-options">
-      <a class="modal-option" href="https://wa.me/5511999999999?text=Olá! Vim pelo site da MCALL Solutions e gostaria de solicitar um diagnóstico gratuito." target="_blank" rel="noopener">
+      <a class="modal-option" id="modalWa" href="https://wa.me/5511999999999?text=Olá! Vim pelo site da MCALL Solutions e gostaria de solicitar um diagnóstico gratuito." target="_blank" rel="noopener">
         <div class="modal-option-icon">💬</div>
         <div>
           <div class="modal-option-title">WhatsApp Direto</div>
@@ -1543,7 +1798,7 @@ footer {
           <div class="modal-option-sub">Retorno completo em até 24h</div>
         </div>
       </a>
-      <a class="modal-option" href="mailto:contato@mcallsolutions.com.br?subject=Diagnóstico Operacional — ISP">
+      <a class="modal-option" href="mailto:mcallsolutions@gmail.com?subject=Diagnóstico Operacional — ISP">
         <div class="modal-option-icon">✉️</div>
         <div>
           <div class="modal-option-title">Enviar E-mail</div>
@@ -1594,7 +1849,15 @@ function switchTab(id, btn) {
 }
 
 // ─── Modal ───
-function openModal() {
+function openModal(plan) {
+  const lead = document.getElementById('modalLead');
+  const wa = document.getElementById('modalWa');
+  if (!wa.dataset.base) { wa.dataset.base = wa.getAttribute('href').split('?')[0]; wa.dataset.lead = lead.textContent; }
+  lead.textContent = plan ? 'Plano de interesse: ' + plan + '. Escolha como prefere iniciar.' : wa.dataset.lead;
+  const txt = plan
+    ? 'Olá! Vim pelo site da MCALL Solutions e tenho interesse no plano ' + plan + '. Gostaria de receber uma proposta.'
+    : 'Olá! Vim pelo site da MCALL Solutions e gostaria de solicitar um diagnóstico gratuito.';
+  wa.href = wa.dataset.base + '?text=' + encodeURIComponent(txt);
   document.getElementById('modalOverlay').classList.add('active');
   document.body.style.overflow = 'hidden';
 }
@@ -1649,6 +1912,191 @@ function toggleNav() {
 document.querySelectorAll('#navLinks a').forEach(a => {
   a.addEventListener('click', () => document.body.classList.remove('nav-mobile-open'));
 });
+
+// ─── Planos: seletor de volume + painel interativo ───
+(function () {
+  const root = document.querySelector('.pl-console');
+  if (!root) return;
+
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const tabs = Array.from(root.querySelectorAll('.pl-tab'));
+  const panels = Array.from(root.querySelectorAll('.pl-panel'));
+  const ticks = Array.from(root.querySelectorAll('.pl-tick'));
+  const range = root.querySelector('#plVolume');
+  const out = root.querySelector('#plVolumeOut');
+  const hint = root.querySelector('#plHint');
+  const stage = root.querySelector('.pl-stage');
+  const money = new Intl.NumberFormat('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  const DAYS = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'];
+  const H0 = 8, H1 = 22; // grade mostra das 08h às 22h
+  const maxFranchise = Math.max.apply(null, tabs.map(function (t) { return +t.dataset.franchise; }));
+  let current = (tabs.find(function (t) { return t.getAttribute('aria-selected') === 'true'; }) || tabs[0]).dataset.plan;
+
+  // Grade de cobertura (dias × horas) montada a partir dos data-attributes
+  root.querySelectorAll('.pl-grid').forEach(function (grid) {
+    const days = grid.dataset.days.split(',').map(Number);
+    const from = +grid.dataset.from, to = +grid.dataset.to;
+    const frag = document.createDocumentFragment();
+    frag.appendChild(document.createElement('span'));
+    for (let h = H0; h < H1; h++) {
+      const l = document.createElement('span');
+      l.className = 'hl';
+      if ((h - H0) % 4 === 0) l.textContent = String(h).padStart(2, '0') + 'h';
+      frag.appendChild(l);
+    }
+    for (let d = 0; d < 7; d++) {
+      const dl = document.createElement('span');
+      dl.className = 'dl';
+      dl.textContent = DAYS[d];
+      frag.appendChild(dl);
+      for (let h = H0; h < H1; h++) {
+        const c = document.createElement('span');
+        c.className = 'c' + (days.indexOf(d) > -1 && h >= from && h < to ? ' on' : '');
+        c.style.setProperty('--d', (d * 38 + (h - H0) * 22) + 'ms');
+        c.dataset.d = d;
+        c.dataset.h = h;
+        frag.appendChild(c);
+      }
+    }
+    grid.appendChild(frag);
+  });
+  root.querySelectorAll('.pl-inc li').forEach(function (li, i, all) {
+    const siblings = Array.prototype.indexOf.call(li.parentNode.children, li);
+    li.style.setProperty('--i', siblings);
+  });
+
+  // "Agora": marca a célula do horário atual (Brasília) e diz se a equipe está no ar
+  function brNow() {
+    const parts = new Intl.DateTimeFormat('en-US', {
+      timeZone: 'America/Sao_Paulo', weekday: 'short', hour: '2-digit', minute: '2-digit', hourCycle: 'h23'
+    }).formatToParts(new Date());
+    const get = function (t) { return parts.find(function (p) { return p.type === t; }).value; };
+    return { d: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].indexOf(get('weekday')), h: +get('hour'), m: get('minute') };
+  }
+  function markNow() {
+    const now = brNow();
+    const clock = String(now.h).padStart(2, '0') + 'h' + now.m;
+    root.querySelectorAll('.pl-grid').forEach(function (grid) {
+      grid.querySelectorAll('.c.now').forEach(function (c) { c.classList.remove('now'); });
+      const cell = grid.querySelector('.c[data-d="' + now.d + '"][data-h="' + now.h + '"]');
+      if (cell) cell.classList.add('now');
+      const live = !!(cell && cell.classList.contains('on'));
+      const status = grid.closest('.pl-cover').querySelector('.pl-now');
+      status.dataset.live = live;
+      status.textContent = 'Agora, em Brasília, são ' + clock + ': ' + (live ? 'equipe no ar.' : 'fora do horário de atendimento.');
+    });
+  }
+  markNow();
+  setInterval(markNow, 60000);
+
+  // Contagem do preço ao abrir um plano
+  function countUp(el) {
+    const to = +el.dataset.value;
+    if (reduce) { el.textContent = money.format(to); return; }
+    const t0 = performance.now(), dur = 700;
+    (function frame(t) {
+      const k = Math.min(1, (t - t0) / dur);
+      el.textContent = money.format(to * (1 - Math.pow(1 - k, 3)));
+      if (k < 1) requestAnimationFrame(frame);
+    })(t0);
+  }
+  function play(panel) {
+    panel.classList.remove('is-in');
+    void panel.offsetWidth;
+    panel.classList.add('is-in');
+    countUp(panel.querySelector('.pl-amount'));
+  }
+
+  function keyFor(v) {
+    for (let i = 0; i < tabs.length; i++) if (v <= +tabs[i].dataset.franchise) return tabs[i].dataset.plan;
+    return tabs[tabs.length - 1].dataset.plan;
+  }
+  function updateDial(v) {
+    const min = +range.min, max = +range.max;
+    const tab = root.querySelector('#tab-' + keyFor(v));
+    range.style.setProperty('--v', (v - min) / (max - min));
+    range.value = v;
+    out.textContent = v;
+    if (v > maxFranchise) {
+      hint.textContent = 'Acima de ' + maxFranchise + ' atendimentos por mês. Fale com um especialista para dimensionar a operação.';
+      range.setAttribute('aria-valuetext', v + ' atendimentos por mês, acima da maior franquia');
+    } else {
+      const cap = +tab.dataset.franchise;
+      hint.textContent = tab.dataset.name + ' cobre esse volume: você usaria ' + Math.round(v / cap * 100) + '% dos ' + cap + ' atendimentos da franquia.';
+      range.setAttribute('aria-valuetext', v + ' atendimentos por mês, plano ' + tab.dataset.name);
+    }
+  }
+
+  function selectPlan(key, opts) {
+    opts = opts || {};
+    const tab = root.querySelector('#tab-' + key);
+    if (!tab) return;
+    const changed = key !== current;
+    current = key;
+    tabs.forEach(function (t) {
+      const on = t === tab;
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      t.tabIndex = on ? 0 : -1;
+    });
+    ticks.forEach(function (t) { t.classList.toggle('is-on', t.dataset.plan === key); });
+    panels.forEach(function (p) {
+      if (p.id === 'panel-' + key) {
+        const wasHidden = p.hidden;
+        p.hidden = false;
+        if (opts.silent) p.classList.add('is-in');
+        else if (changed || wasHidden) play(p);
+      } else {
+        p.hidden = true;
+        p.classList.remove('is-in');
+      }
+    });
+    if (!opts.fromSlider) updateDial(+tab.dataset.franchise);
+  }
+
+  range.addEventListener('input', function () {
+    const v = +range.value;
+    updateDial(v);
+    const key = keyFor(v);
+    if (key !== current) selectPlan(key, { fromSlider: true });
+  });
+  tabs.forEach(function (tab, i) {
+    tab.addEventListener('click', function () { selectPlan(tab.dataset.plan); });
+    tab.addEventListener('keydown', function (e) {
+      let n = -1;
+      if (e.key === 'ArrowDown' || e.key === 'ArrowRight') n = (i + 1) % tabs.length;
+      else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') n = (i - 1 + tabs.length) % tabs.length;
+      else if (e.key === 'Home') n = 0;
+      else if (e.key === 'End') n = tabs.length - 1;
+      if (n < 0) return;
+      e.preventDefault();
+      tabs[n].focus();
+      selectPlan(tabs[n].dataset.plan);
+    });
+  });
+  ticks.forEach(function (t) { t.addEventListener('click', function () { selectPlan(t.dataset.plan); }); });
+
+  // Foco de luz que acompanha o cursor no palco
+  if (!reduce && window.matchMedia('(pointer: fine)').matches) {
+    stage.addEventListener('pointermove', function (e) {
+      const r = stage.getBoundingClientRect();
+      stage.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      stage.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    });
+  }
+
+  // Estado inicial sem animação; o "momento" acontece quando o bloco entra na tela
+  selectPlan(current, { silent: true });
+  updateDial(+range.value);
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(function (entries) {
+      if (entries[0].isIntersecting) {
+        io.disconnect();
+        play(root.querySelector('.pl-panel:not([hidden])'));
+      }
+    }, { threshold: 0.35 });
+    io.observe(root);
+  }
+})();
 
 // ─── Keyboard close modal ───
 document.addEventListener('keydown', e => {
